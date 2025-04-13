@@ -1,0 +1,13 @@
+{
+  // Extension Configuration
+  "files.exclude": { "out": false },
+  "search.exclude": { "out": true },
+  "typescript.tsc.autoDetect": "off",
+
+  // Sample Configuration
+  "debug.internalConsoleOptions": "openOnSessionStart",
+  "launcher.mappings": [
+    { "name": "Run Extension", "pattern": "extension\\.ts" },
+    { "name": "Extension Tests", "pattern": "\\.test\\.ts" }
+  ]
+}

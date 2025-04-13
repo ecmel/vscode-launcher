@@ -1,0 +1,116 @@
+{
+  "name": "vscode-launcher",
+  "displayName": "Launcher",
+  "description": "Launcher action for debug configurations",
+  "version": "0.0.1",
+  "license": "MIT",
+  "publisher": "ecmel",
+  "author": {
+    "name": "Ecmel Ercan",
+    "url": "https://ecmel.dev/"
+  },
+  "sponsor": {
+    "url": "https://github.com/sponsors/ecmel"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ecmel/vscode-launcher.git"
+  },
+  "bugs": "https://github.com/ecmel/vscode-launcher/issues",
+  "homepage": "https://github.com/ecmel/vscode-launcher",
+  "engines": {
+    "vscode": "^1.99.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "launch",
+    "run",
+    "debug",
+    "multi-root ready"
+  ],
+  "main": "./out/extension.js",
+  "icon": "icon.png",
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "contributes": {
+    "configuration": [
+      {
+        "title": "Launcher",
+        "properties": {
+          "launcher.mappings": {
+            "scope": "resource",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "title": "Mappings",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "description": "Debug configuration name."
+                },
+                "pattern": {
+                  "type": "string",
+                  "description": "File path pattern."
+                }
+              }
+            },
+            "default": [],
+            "description": "Debug configuration mappings."
+          }
+        }
+      }
+    ],
+    "commands": [
+      {
+        "command": "vscode-launcher.run",
+        "title": "Launch",
+        "enablement": "launcher.name",
+        "icon": "$(run)"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "vscode-launcher.run",
+        "key": "ctrl+l",
+        "mac": "cmd+l",
+        "when": "launcher.name"
+      }
+    ],
+    "menus": {
+      "editor/title/run": [
+        {
+          "command": "vscode-launcher.run",
+          "group": "launcher@1",
+          "when": "launcher.name"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "clean": "git clean -xfdf",
+    "reset": "npm run clean && npm install",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "lint": "eslint src",
+    "pretest": "npm run compile && npm run lint",
+    "test": "vscode-test",
+    "coverage": "npm run test -- --coverage",
+    "vscode:prepublish": "npm run compile",
+    "package": "npx --package=@vscode/vsce -- vsce package"
+  },
+  "devDependencies": {
+    "@types/node": "20.x",
+    "@types/sinon": "^17.0.4",
+    "@types/vscode": "1.99.0",
+    "@typescript-eslint/eslint-plugin": "8.29.1",
+    "@typescript-eslint/parser": "8.29.1",
+    "@vscode/test-cli": "0.0.10",
+    "@vscode/test-electron": "2.5.2",
+    "eslint": "9.24.0",
+    "sinon": "20.0.0",
+    "typescript": "5.8.3"
+  }
+}
