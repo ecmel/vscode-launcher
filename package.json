@@ -99,7 +99,8 @@
     "test": "vscode-test",
     "coverage": "npm run test -- --coverage",
     "vscode:prepublish": "npm run compile",
-    "package": "npx --package=@vscode/vsce -- vsce package"
+    "package": "npx --package=@vscode/vsce -- vsce package",
+    "publish": "npx --package=@vscode/vsce -- vsce publish"
   },
   "devDependencies": {
     "@types/node": "20.x",

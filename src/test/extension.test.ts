@@ -18,10 +18,7 @@ describe("Extension Test Suite", () => {
   }
 
   async function open() {
-    const document = await vscode.workspace.openTextDocument({
-      language: "typescript",
-      content: "",
-    });
+    const document = await vscode.workspace.openTextDocument({});
     await vscode.window.showTextDocument(document);
   }
 
