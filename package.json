@@ -1,6 +1,6 @@
 {
   "name": "vscode-launcher",
-  "displayName": "Launcher",
+  "displayName": "Debug Configuration Launcher",
   "description": "Launcher action for debug configurations",
   "version": "0.0.1",
   "license": "MIT",
